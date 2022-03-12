@@ -1,0 +1,105 @@
+
+.rules-items-dropped {
+    /*position: relative;*/
+}
+
+.badge_info {
+    margin: 0 3px;
+    width: 200px;
+    height: 50px;
+    box-shadow: 6px 6px 15px 0 rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    color: #fff;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    transition: width 0.5s;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.badge_info[data-active="2"],
+.shadow[data-active="2"] {
+    border: 1px solid #f28528;
+    color: #f28528;
+}
+
+.badge_info[data-active="3"],
+.shadow[data-active="3"] {
+    border: 1px solid #e81e26;
+    width: 100px;
+    justify-content: center;
+}
+
+.badge_info[data-active="3"] .getaway_name {
+    color: #e81e26;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.shadow {
+    opacity: 0;
+    width: 100%;
+    height: 50px;
+    box-shadow: 6px 6px 15px 0 rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    color: #fff;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    transition: width 0.5s;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 2;
+}
+
+.badge_info[data-active="0"]:hover .shadow {
+    opacity: 1;
+    width: max-content;
+    border-right: 2px solid #35c280;
+}
+
+.badge_info[data-active="1"]:hover .shadow {
+    opacity: 1;
+    width: max-content;
+    border-right: 2px solid #e81e26;
+}
+
+.badge_info[data-active="2"]:hover .shadow {
+    opacity: 1;
+    width: max-content;
+    border: 1px solid #f28528;
+    border-left: none;
+    color: #f28528;
+}
+
+.gateway_index {
+    min-width: 16px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+.badge_info[data-active="0"] .gateway_index {
+    background-color: #35c280;
+}
+
+.badge_info[data-active="1"] .gateway_index {
+    background-color: #e81e26;
+}
+
+.badge_info[data-active="2"] .gateway_index {
+    border-right: 1px solid #f28528;
+}
+
+.getaway_name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+    padding: 0 12px;
+}
+

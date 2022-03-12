@@ -1,0 +1,88 @@
+.container {
+    clear: both;
+    position: absolute;
+    bottom: 70px;
+    left: -24px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+    z-index: 2;
+    color: #999;
+}
+
+.container_show {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1s linear 500ms, opacity 300ms;
+}
+
+.container .arrow_ {
+    width: 12px;
+    position: relative;
+    bottom: -13px;
+    right: -25px;
+}
+
+.container .arrow_ .outer_ {
+    width: 0;
+    height: 0;
+    border-top: 13px solid;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: absolute;
+    top: 0;
+    left: -4px;
+}
+
+.container .arrow_ .inner_ {
+    width: 0;
+    height: 0;
+    border-top: 14px solid #ffffff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: absolute;
+    top: -2px;
+    left: -4px;
+}
+
+.container .arrow_left {
+    width: 12px;
+    position: absolute;
+    top: 19px;
+    left: -16px;
+}
+
+.container .arrow_left .outer_left {
+    width: 0;
+    height: 0;
+    border-right: 20px solid;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    top: 0;
+    left: -4px;
+}
+
+.container .arrow_left .inner_left {
+    width: 0;
+    height: 0;
+    border-right: 20px solid #fff;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    top: 0;
+    left: -2px;
+}
+
+.message-body {
+    height: auto;
+    background-color: #fff;
+    border: 1px solid;
+    padding: 12px 18px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.message-body p {
+    margin: 0;
+}

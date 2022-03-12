@@ -1,0 +1,78 @@
+
+.rules_container_info {
+    display: flex;
+    margin: 10px;
+    height: 50px;
+    transition: height 0.5s;
+}
+
+.gateways {
+    display: flex;
+    position: relative;
+}
+
+.btns {
+    position: absolute;
+    transition: top 0.5s, left 0.5s;
+    display: flex;
+}
+
+.btns_shadow {
+    left: 0;
+    right: -112px;
+}
+
+.more_gateways {
+    width: 100%;
+    display: flex;
+}
+
+.rules_container_info_active {
+    height: fit-content;
+}
+
+.more_gateways_active {
+    flex-wrap: wrap;
+    gap: 10px 0;
+}
+
+/**/
+.rules_container_info_item:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.rules_container_info_item {
+    width: 100px;
+    min-width: 100px;
+    height: 50px;
+    box-shadow: 6px 6px 15px 0 rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 3px;
+position: relative;
+
+    color: #999;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.country_img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.currency,
+.country_name {
+    font-weight: bold;
+    color: #333;
+    display: inline-block
+}
+
+.card_img {
+    width: 50px;
+    height: 30px;
+}

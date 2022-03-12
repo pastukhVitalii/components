@@ -1,0 +1,38 @@
+.btn_more_getaway_wrap {
+    position: relative;
+    margin: 0 3px;
+}
+
+.btn_more_getaway {
+    width: 50px;
+    height: 50px;
+    box-shadow: 6px 6px 15px 0 rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid #fff;
+    transition: border-width 0.5s;
+    box-sizing: border-box;
+}
+
+.btn_more_getaway:hover {
+    border: 1px solid #cdcdcd;
+}
+
+.gateway_arrow {
+    position: absolute;
+    top: 13px;
+    right: 18px;
+    transition: transform 0.5s;
+}
+
+.gateway_arrow_active {
+    transform: rotate(180deg);
+}
+
+.gateway_count {
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    right: 4px;
+}

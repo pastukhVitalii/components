@@ -1,0 +1,26 @@
+.info_prompt_container {
+    position: relative;
+}
+
+.rule-engine-info-icon {
+    height: 20px;
+    width: 20px;
+    margin-left: 12px;
+    border: 1px solid #1a577a;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #1a577a;
+    cursor: pointer;
+    display: block;
+    transition: 0.3s;
+}
+
+.rule-engine-info-icon:hover {
+    color: #999;
+    border: 1px solid #999;
+}
