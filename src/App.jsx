@@ -13,6 +13,7 @@ import ExpandingButton from "./components/ExpandingButton/ExpandingButton";
 import {ToggleSwitch} from "./components/ToggleSwitch/ToggleSwitch";
 import {FilterModal} from "./components/FilterModal/FilterModal";
 import {AddEditRuleModal} from "./components/AddEditRuleModal/AddEditRuleModal";
+import {Dropdown} from "./components/Dropdown/Dropdown";
 
 const gateways = [
   {gatewaySystemName: 'Test Card Processor Alexsey - alexsey.shestopalov+root@atlastec.io', status: 0},
@@ -24,6 +25,16 @@ const gateways = [
   {gatewaySystemName: 'Acquiring - alexsey.shestopalov+root@atlastec.io', status: 0},
 ]
 
+const countries = [
+  { "name": "Afghanistan", "code": "AF" },
+  { "name": "Aland Islands", "code": "AX" },
+  { "name": "Albania", "code": "AL" },
+  { "name": "Algeria", "code": "DZ" },
+  { "name": "American Samoa", "code": "AS" },
+  { "name": "Andorra", "code": "AD" },
+  { "name": "Angola", "code": "AO" }
+  ]
+
 function App() {
 
   const [width, setWidth] = useState({windowWidth: window.innerWidth});
@@ -32,6 +43,7 @@ function App() {
   const [isExpandRule, setIsExpandRule] = useState(false);
   const [isCollapsedRules, setIsCollapsedRules] = useState(false);
   const [isRuleModal, setIsRuleModal] = useState(false);
+  const [value, setValue] = useState(null);
 
   const handleResize = () => {
     setWidth({windowWidth: window.innerWidth});
@@ -84,7 +96,9 @@ function App() {
 
       <ExpandingButton onClick={showHideRules} isCollapsed={isCollapsedRules}/>
       <ToggleSwitch label='restrict'/>
-      {/*style={{height: height + 'px'}}*/}
+
+      <Dropdown options={countries} id='id' label='name' prompt='Select country' value={value} onChange={val => setValue(val)}/>
+
       <div className='rules_container_info' style={{...height}}>
         <RulesContainerInfoCountry/>
         <RulesContainerInfoCurrency/>
