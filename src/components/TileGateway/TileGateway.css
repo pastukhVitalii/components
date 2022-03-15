@@ -1,0 +1,39 @@
+.tile_item {
+    display: flex;
+    align-items: center;
+    color: #000;
+    background-color: #fff;
+    font-weight: normal;
+    margin: 3px 2px 3px 2px;
+    padding: 0 15px;
+    position: relative;
+    width: 165px;
+    height: 38px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 16px;
+    box-sizing: border-box;
+}
+
+.tile_item[data-active="0"] {
+    border: 1px solid #e81e26;
+    color: #e81e26;
+}
+
+.tile_item[data-active="1"] {
+    border: 1px solid #35c280;
+}
+
+.remove-gateway-item {
+    font-weight: bold;
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+.tile_item[data-active="0"] .remove-gateway-item {
+    color: #e81e26;
+}
+
+.tile_item[data-active="1"] .remove-gateway-item {
+    color: #35c280;
+}

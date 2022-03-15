@@ -27,10 +27,6 @@
     display: flex;
 }
 
-.rules_container_info_active {
-    height: fit-content;
-}
-
 .more_gateways_active {
     flex-wrap: wrap;
     gap: 10px 0;

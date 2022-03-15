@@ -4,10 +4,12 @@ import editIcon from '../../assets/icons/edit-icon.svg';
 import deleteIcon from '../../assets/icons/delete-icon.svg';
 import showMoreIcon from '../../assets/icons/show-more-icon.svg';
 import hideIcon from '../../assets/icons/hide-icon.svg';
+import {useOutsideClick} from "../../hooks/useOutsideClick";
 
 export const RuleBtnMenu = ({title, isCollapsedRule}) => {
   const [active, setActive] = useState(false);
   const ref = useRef();
+  useOutsideClick(ref, () =>setActive(false))
   return (
     <>
       <div className="rule_btn_menu" ref={ref}>
