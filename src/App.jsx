@@ -14,6 +14,7 @@ import {ToggleSwitch} from "./components/ToggleSwitch/ToggleSwitch";
 import {FilterModal} from "./components/FilterModal/FilterModal";
 import {AddEditRuleModal} from "./components/AddEditRuleModal/AddEditRuleModal";
 import {Dropdown} from "./components/Dropdown/Dropdown";
+import PopoutExample, {DropdownS} from "./components/Dropdown/DropdownS";
 
 const gateways = [
   {gatewaySystemName: 'Test Card Processor Alexsey - alexsey.shestopalov+root@atlastec.io', status: 0},
@@ -26,14 +27,21 @@ const gateways = [
 ]
 
 const countries = [
-  { "name": "Afghanistan", "code": "AF" },
-  { "name": "Aland Islands", "code": "AX" },
-  { "name": "Albania", "code": "AL" },
-  { "name": "Algeria", "code": "DZ" },
-  { "name": "American Samoa", "code": "AS" },
-  { "name": "Andorra", "code": "AD" },
-  { "name": "Angola", "code": "AO" }
-  ]
+  {"name": "Afghanistan", "code": "AF"},
+  {"name": "Aland Islands", "code": "AX"},
+  {"name": "Albania", "code": "AL"},
+  {"name": "Algeria", "code": "DZ"},
+  {"name": "American Samoa", "code": "AS"},
+  {"name": "Andorra", "code": "AD"},
+  {"name": "Angola", "code": "AO"},
+  {"name": "Haiti", "code": "HT"},
+  {"name": "Heard Island and Mcdonald Islands", "code": "HM"},
+  {"name": "Holy See (Vatican City State)", "code": "VA"},
+  {"name": "Honduras", "code": "HN"},
+  {"name": "Hong Kong", "code": "HK"},
+  {"name": "Hungary", "code": "HU"},
+  {"name": "Iceland", "code": "IS"},
+]
 
 function App() {
 
@@ -97,8 +105,10 @@ function App() {
       <ExpandingButton onClick={showHideRules} isCollapsed={isCollapsedRules}/>
       <ToggleSwitch label='restrict'/>
 
-      <Dropdown options={countries} id='id' label='name' prompt='Select country' value={value} onChange={val => setValue(val)}/>
-
+      <Dropdown options={countries} id='id' label='name' prompt='Select country' value={value}
+                onChange={val => setValue(val)}/>
+      {/*<DropdownS/>*/}
+      <PopoutExample/>
       <div className='rules_container_info' style={{...height}}>
         <RulesContainerInfoCountry/>
         <RulesContainerInfoCurrency/>

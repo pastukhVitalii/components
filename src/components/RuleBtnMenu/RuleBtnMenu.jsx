@@ -9,7 +9,7 @@ import {useOutsideClick} from "../../hooks/useOutsideClick";
 export const RuleBtnMenu = ({title, isCollapsedRule}) => {
   const [active, setActive] = useState(false);
   const ref = useRef();
-  useOutsideClick(ref, () =>setActive(false))
+  useOutsideClick(ref, () => setActive(false))
   return (
     <>
       <div className="rule_btn_menu" ref={ref}>

@@ -3,6 +3,7 @@
     color: #333;
     cursor: default;
     width: 350px;
+    margin: 24px 0;
 }
 
 .dropdown .arrow {
@@ -20,8 +21,7 @@
 }
 
 .dropdown .arrow.open {
-    border-color: transparent transparent #999;
-    border-width: 0 5px 5px;
+    display: none;
 }
 
 .dropdown .selected_value {
@@ -42,30 +42,39 @@
 }
 
 .dropdown .selected_value.open {
-    border-color: #66afe9;
-    border-bottom: none;
+    border: 1px solid #66afe9;
+    border-bottom: 1px solid transparent;
+    border-radius: 3px 3px 0 0;
+}
+
+.dropdown_prompt {
+    color: #cacaca;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .dropdown .options {
     display: none;
     background-color: #fff;
     border: 1px solid #ccc;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
     box-sizing: border-box;
     margin-top: -1px;
-    max-height: 200px;
+    max-height: 270px;
     overflow-y: auto;
     position: absolute;
     top: 100%;
     width: 100%;
     z-index: 1000;
     -webkit-overflow-scrolling: touch;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
 }
 
 .dropdown .options.open {
     display: block;
     border-color: #66afe9;
     border-top: none;
+    font-weight: 400;
+    /*overflow: hidden;*/
 }
 
 .dropdown .option {
@@ -75,15 +84,40 @@
     background-color: #fff;
     color: #333;
     padding: 8px 10px;
+    position: relative;
 }
 
-.dropdown .option.selected,
-.dropdown .option:hover {
+.dropdown .option.selected {
+    color: #FFFFFF;
+    background-color: #0ca1d7;
+}
+.dropdown .hovered {
     color: #FFFFFF;
     background-color: #0ca1d785;
 }
 
+.option.selected::before {
+    content: "";
+}
+
+.option::before {
+    content: "\2713";
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.dropdown_search_wrap {
+    border: 1px solid #66afe9;
+    border-top: none;
+    background-color: #fff;
+}
+
 .dropdown_search {
+    padding: 4px;
     margin: 4px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -91,4 +125,87 @@
     color: #555;
     height: 20px;
     width: -webkit-fill-available;
+    font-size: 14px;
+    background: url('https://atlas2.cashier-dev.com/assets/fd4ebe91/css/search.png') right 10px top 7px no-repeat #fff;
+}
+
+.dropdown,
+.dropdown_search:focus-visible,
+.dropdown .option:focus-visible{
+    outline: none;
+}
+.dropdown:focus {
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 6px rgb(102 175 233 / 60%);
+}
+
+
+
+.dropdown2:focus,
+.dropdown2:focus-visible {
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 6px rgb(102 175 233 / 60%);
+    outline: none;
+}
+
+.control.open {
+    border: 1px solid #66afe9;
+    border-bottom: 1px solid transparent;
+    border-radius: 3px 3px 0 0;
+}
+
+button.control {
+    line-height: 1.5;
+    background-color: #fff;
+    box-sizing: border-box;
+    cursor: default;
+    outline: none;
+    padding: 8px 52px 8px 10px;
+    transition: all 200ms ease;
+    width: 350px;
+    height: 41px;
+    border: 1px solid #d9e1e8;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    color: #cacaca;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+}
+
+.select_arrow {
+    border-color: #0CA1D7 transparent transparent;
+    border-style: solid;
+    border-width: 5px 5px 0;
+    content: " ";
+    display: block;
+    height: 0;
+    margin-top: 0.3rem;
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    width: 0;
+}
+
+.dropdown_search2 {
+
+}
+
+.dropdown_option:hover {
+    background-color: #e81e26;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #dddddd;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #0ca1d785;
+    border-radius: 5px;
 }
