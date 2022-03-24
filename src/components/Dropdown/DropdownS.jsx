@@ -1,19 +1,8 @@
-import {Component} from 'react';
+import {memo, useCallback, useRef, useState} from 'react';
 import Select from 'react-select';
 import checkMark from '../../assets/icons/checkMark.svg';
 import './Dropdown.css';
-
-const options = [
-  {value: 'chocolate', label: 'Chocolate'},
-  {value: 'strawberry', label: 'Strawberry'},
-  {value: 'strawberry', label: 'Strawberry'},
-  {value: 'strawberry', label: 'Strawberry'},
-  {value: 'strawberry', label: 'Strawberry'},
-  {value: 'strawberry', label: 'Strawberry'},
-  {value: 'strawberry', label: 'Strawberry'},
-  {value: 'strawberry', label: 'Strawberry'},
-  {value: 'vanilla', label: 'Vanilla'}
-]
+import {useOutsideClick} from "../../hooks/useOutsideClick";
 
 const selectStyles = {
   option: (provided, state) => {
@@ -26,10 +15,10 @@ const selectStyles = {
         ':active': {
           backgroundColor: 'white'
         },
-        backgroundImage: state.isFocused ? `url(${checkMark})`: null,
-        backgroundRepeat: state.isFocused ? 'no-repeat': null,
-        backgroundPosition: state.isFocused ? 'right 10px top 10px': null,
-        backgroundSize: state.isFocused ? '15px': null,
+        backgroundImage: state.isFocused ? `url(${checkMark})` : null,
+        backgroundRepeat: state.isFocused ? 'no-repeat' : null,
+        backgroundPosition: state.isFocused ? 'right 10px top 10px' : null,
+        backgroundSize: state.isFocused ? '15px' : null,
       }
     )
   },
@@ -51,49 +40,58 @@ const selectStyles = {
   menu: () => ({}),
 };
 
-export default class PopoutExample extends Component {
-  state = {isOpen: false, value: undefined};
-  toggleOpen = () => {
-    this.setState((state) => ({isOpen: !state.isOpen}));
-  };
-  onSelectChange = (value) => {
-    this.toggleOpen();
-    this.setState({value});
-  };
+export const DropdownS = memo(({options, isMulti=false}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState();
+  const wrapperRef = useRef(null);
 
-  render() {
-    const {isOpen, value} = this.state;
-    return (
-      <div className='dropdown2'>
-        <Dropdown
-          isOpen={isOpen}
-          onClose={this.toggleOpen}
-          target={
-            <button onClick={this.toggleOpen} className={`control ${isOpen ? 'open' : ''}`}>
-              {value ? `${value.label}` : 'Select'}
-              {!isOpen && <div className='select_arrow'/>}
-            </button>
-          }>
-          <Select
-            autoFocus
-            backspaceRemovesValue={false}
-            components={{DropdownIndicator, IndicatorSeparator: null}}
-            controlShouldRenderValue={false}
-            hideSelectedOptions={false}
-            isClearable={false}
-            menuIsOpen
-            onChange={this.onSelectChange}
-            options={options}
-            placeholder="Search..."
-            styles={selectStyles}
-            tabSelectsValue={false}
-            value={value}
-            maxMenuHeight={200}
-          />
-        </Dropdown></div>
-    );
-  }
-}
+  const onSelectChange = useCallback((v) => {
+    isMulti ? setValue((prev= []) => [...prev, v]) : setValue(v);
+    setIsOpen(false);
+  }, [isOpen])
+
+  useOutsideClick(wrapperRef, () => {
+    setIsOpen(false)
+  });
+
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
+
+  return (
+    <div ref={wrapperRef}>
+      <Dropdown
+        isOpen={isOpen}
+        onClose={closeModal}
+        isMulti={isMulti}
+        value={value}
+        setValue={setValue}
+        target={
+          <button onClick={openModal} className={`control ${isOpen ? 'open' : ''}`}>
+            {isMulti ? "Select" : value ? `${value?.label}` : 'Select'}
+            {!isOpen && <div className='select_arrow'/>}
+          </button>
+        }>
+        <Select
+          autoFocus
+          backspaceRemovesValue={false}
+          components={{DropdownIndicator, IndicatorSeparator: null}}
+          controlShouldRenderValue={false}
+          hideSelectedOptions={false}
+          isClearable={false}
+          menuIsOpen
+          onChange={onSelectChange}
+          options={options}
+          placeholder="Search..."
+          styles={selectStyles}
+          tabSelectsValue={false}
+          value={value}
+          maxMenuHeight={200}
+          isOptionDisabled={(option) =>isMulti? value?.some((v) => option.value === v.value): false}
+        />
+      </Dropdown>
+    </div>
+  );
+})
 
 // styled components
 
@@ -117,32 +115,19 @@ const Menu = (props) => {
   );
 };
 
-// close when click outside
-const Blanket = (props) => (
-  <div
-    style={{
-      bottom: 0,
-      left: 0,
-      top: 0,
-      right: 0,
-      position: 'fixed',
-      zIndex: 1,
-    }}
-    {...props}
-  />
-);
-
 const Dropdown = (
   {
     children,
     isOpen,
     target,
-    onClose,
+    isMulti,
+    value,
+    setValue,
   }) => (
   <div style={{position: 'relative'}}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}
-    {isOpen ? <Blanket onClick={onClose}/> : null}
+    {isMulti ? <SelectedValue value={value} setValue={setValue}/> : null}
   </div>
 );
 
@@ -150,3 +135,11 @@ const DropdownIndicator = () => (
   <div className='dropdown_search2'/>
 );
 
+const SelectedValue = ({value, setValue}) => (
+  <div className='selected_area'>
+    {value && value?.map(v => <div key={v.value} className='selected_item'>
+      {v.label}
+      <span className='remove_item' onClick={() => setValue(value.filter(i => i.value !== v.value))}>✕</span>
+    </div>)}
+  </div>
+)

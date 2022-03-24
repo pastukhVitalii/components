@@ -48,6 +48,10 @@
     width: 20px;
 }
 
+.modal_rule_configuration {
+    display: flex;
+}
+
 .modal_rule .title {
     font-size: 18px;
     font-weight: bold;

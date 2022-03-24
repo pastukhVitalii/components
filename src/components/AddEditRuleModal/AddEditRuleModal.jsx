@@ -1,12 +1,19 @@
-import {useRef} from "react";
+import {memo, useRef} from "react";
 import {useOutsideClick} from "../../hooks/useOutsideClick";
 import closeIcon from '../../assets/icons/close-icon.svg';
-import {TileGateway} from "../TileGateway/TileGateway";
 
 import './AddEditRuleModal.css';
 import {Button} from "../Button/Button";
+import {DropdownS} from "../Dropdown/DropdownS";
+import {TileGateway} from "../TileGateway/TileGateway";
 
-export const AddEditRuleModal = ({isOpen, setIsOpen, ...restProps}) => {
+const options = [
+  {value: 'chocolate', label: 'Chocolate'},
+  {value: 'strawberry', label: 'Strawberry'},
+  {value: 'vanilla', label: 'Vanilla'}
+]
+
+export const AddEditRuleModal = memo(({isOpen, setIsOpen, ...restProps}) => {
   const wrapperRef = useRef(null);
 
   useOutsideClick(wrapperRef, () => {
@@ -25,6 +32,16 @@ export const AddEditRuleModal = ({isOpen, setIsOpen, ...restProps}) => {
             <img src={closeIcon} alt="close modal" className='closeModal' tabIndex={1}
                  onClick={() => setIsOpen(false)} autoFocus/>
             <h3>Add Rule</h3>
+            <div className='modal_rule_configuration'>
+              <div>
+                Country
+                <DropdownS options={options}/>
+              </div>
+              <div>
+                Currency
+                <DropdownS options={options} isMulti/>
+              </div>
+            </div>
             <section className='modal_rule_section'>
               <h4>Create your rule by choosing gateway</h4>
               <p>You can sort the items in the below section. Click X on the items you wish to remove from the rule.</p>
@@ -57,4 +74,4 @@ export const AddEditRuleModal = ({isOpen, setIsOpen, ...restProps}) => {
       )}
     </>
   )
-}
+})

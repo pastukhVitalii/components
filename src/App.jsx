@@ -14,7 +14,7 @@ import {ToggleSwitch} from "./components/ToggleSwitch/ToggleSwitch";
 import {FilterModal} from "./components/FilterModal/FilterModal";
 import {AddEditRuleModal} from "./components/AddEditRuleModal/AddEditRuleModal";
 import {Dropdown} from "./components/Dropdown/Dropdown";
-import PopoutExample, {DropdownS} from "./components/Dropdown/DropdownS";
+import {DropdownS} from "./components/Dropdown/DropdownS";
 
 const gateways = [
   {gatewaySystemName: 'Test Card Processor Alexsey - alexsey.shestopalov+root@atlastec.io', status: 0},
@@ -42,7 +42,11 @@ const countries = [
   {"name": "Hungary", "code": "HU"},
   {"name": "Iceland", "code": "IS"},
 ]
-
+const options = [
+  {value: 'chocolate', label: 'Chocolate'},
+  {value: 'strawberry', label: 'Strawberry'},
+  {value: 'vanilla', label: 'Vanilla'}
+]
 function App() {
 
   const [width, setWidth] = useState({windowWidth: window.innerWidth});
@@ -107,8 +111,7 @@ function App() {
 
       <Dropdown options={countries} id='id' label='name' prompt='Select country' value={value}
                 onChange={val => setValue(val)}/>
-      {/*<DropdownS/>*/}
-      <PopoutExample/>
+      <DropdownS options={options}/>
       <div className='rules_container_info' style={{...height}}>
         <RulesContainerInfoCountry/>
         <RulesContainerInfoCurrency/>

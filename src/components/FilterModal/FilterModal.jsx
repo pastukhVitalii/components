@@ -3,6 +3,7 @@ import {useRef, useState} from "react";
 import filterIcon from "../../assets/icons/filter-icon.svg";
 import {Button} from "../Button/Button";
 import {useOutsideClick} from "../../hooks/useOutsideClick";
+import {DropdownS} from "../Dropdown/DropdownS";
 
 export const FilterModal = ({...restProps}) => {
   const [isFilterModal, setIsFilterModal] = useState(false);
@@ -26,6 +27,7 @@ export const FilterModal = ({...restProps}) => {
               <div className='inner'/>
             </div>
             <h3 className='modal_filter_title'>Filter Routing rules</h3>
+            <DropdownS/>
           </div>
         </div>
       )}
